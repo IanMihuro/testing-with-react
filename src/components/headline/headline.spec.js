@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import Headline from "./index";
 
 import "../../setupTest";
-import { findByTestAttr } from "../../../Utils/index.js";
+import { findByTestAttr, checkProps } from "../../../Utils/index.js";
 
 const setUp = (props = {}) => {
   const component = shallow(<Headline {...props} />);
@@ -42,6 +42,26 @@ describe("Headline Component", () => {
     it("Should not render", () => {
       const wrapper = findByTestAttr(component, "HeadlineComponent");
       expect(wrapper.length).toBe(0);
+    });
+  });
+  describe("Checking PropTypes", () => {
+    it("Should not throw a warning", () => {
+      const expectedProps = {
+        header: "Test Header",
+        desc: "Test Desc",
+        tempArray: [
+          {
+            fName: "Test fName",
+            lName: "Test lName",
+            email: "test@email.com",
+            age: 29,
+            online: false
+          }
+        ]
+      };
+
+      const propsErr = checkProps(Headline, expectedProps);
+      expect(propsErr).toBeUndefined();
     });
   });
 });
