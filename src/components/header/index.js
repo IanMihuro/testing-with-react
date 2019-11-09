@@ -1,15 +1,16 @@
-import React from 'react'
-import "./styles.scss";
-import Logo from '../../assets/graphics/logo.png';
+import React from "react";
 
-export default function Header() {
-    return (
-        <header data-test="headerComponent">
-            <div className="wrap">
-                <div className="logo">
-                    <img data-test="logoIMG" src={Logo} alt="logo" />
-                </div>
-            </div>
-        </header>
-    )
+import "./styles.scss";
+import Logo from "../../assets/graphics/logo.png";
+
+export default function Header(props) {
+  return (
+    <header data-test="headerComponent">
+      <div className="wrap">
+        <div className="logo">
+          <img data-test="logoIMG" src={Logo} alt="logo" />
+        </div>
+      </div>
+    </header>
+  );
 }
